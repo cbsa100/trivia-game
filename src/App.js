@@ -63,6 +63,7 @@ const App = () => {
     setCategories([]);
     setUsedQuestions([]);
     setNotAllowedCat([]);
+    setDisableButtons(false);
     getCats();
   };
 
