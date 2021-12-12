@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-const QuestionScreen = ({ question, value, answers, onAnswerClick, step }) => {
+const QuestionScreen = ({
+  disableButtons,
+  question,
+  value,
+  answers,
+  onAnswerClick,
+  step,
+}) => {
   const [shuffledAnswers, setShuffledAnswers] = useState([]);
 
   // randomize answers order on answers state change
@@ -36,8 +43,10 @@ const QuestionScreen = ({ question, value, answers, onAnswerClick, step }) => {
             key={i}
             data-correct={e.isCorrect}
             onClick={() => {
-              onAnswerClick(e.isCorrect, value);
-              colorAnswers();
+              if (!disableButtons) {
+                onAnswerClick(e.isCorrect, value);
+                colorAnswers();
+              }
             }}
           >
             {e.answer}

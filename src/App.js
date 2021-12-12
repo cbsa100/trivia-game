@@ -18,6 +18,7 @@ const App = () => {
   const [usedQuestions, setUsedQuestions] = useState([]);
   const [notAllwedCat, setNotAllowedCat] = useState([]);
   const [highScore, setHighScore] = useState(0);
+  const [disableButtons, setDisableButtons] = useState(false);
 
   // init categories
   useEffect(() => {
@@ -30,7 +31,7 @@ const App = () => {
   //move to finalScreen when 0 lives
   useEffect(() => {
     setTimeout(function () {
-      lives === 0 && setPhase(2);
+      lives <= 0 && setPhase(2);
     }, 1000);
   }, [lives]);
 
@@ -67,6 +68,7 @@ const App = () => {
 
   //when choosing an answer option
   const onAnswerClick = async (isCorrect, value) => {
+    setDisableButtons(true);
     if (isCorrect) {
       setScore((s) => s + value);
       setTimeout(function () {
@@ -81,6 +83,7 @@ const App = () => {
           setAnswers([]);
           setQuestion('');
           setValue(0);
+          setDisableButtons(false);
         }
       }, 1000);
       decreaseLives();
@@ -155,6 +158,7 @@ const App = () => {
           answers={answers}
           onAnswerClick={onAnswerClick}
           step={step}
+          disableButtons={disableButtons}
         />
       )}
       {phase === 2 && <FinalScreen score={score} reset={reset} />}
