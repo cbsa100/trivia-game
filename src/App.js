@@ -70,6 +70,9 @@ const App = () => {
   //when choosing an answer option
   const onAnswerClick = async (isCorrect, value) => {
     setDisableButtons(true);
+    setTimeout(function () {
+      setDisableButtons(false);
+    }, 1000);
     if (isCorrect) {
       setScore((s) => s + value);
       setTimeout(function () {
@@ -84,7 +87,6 @@ const App = () => {
           setAnswers([]);
           setQuestion('');
           setValue(0);
-          setDisableButtons(false);
         }
       }, 1000);
       decreaseLives();
