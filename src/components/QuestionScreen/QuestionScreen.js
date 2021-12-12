@@ -34,7 +34,7 @@ const QuestionScreen = ({
 
   return (
     <div>
-      {step > 0 && step % 3 === 0 && <h2>bunos round</h2>}
+      {step > 0 && step % 3 === 0 && <h2>Bonus Round</h2>}
       <h3>{question}</h3>
       <div className='options'>
         {shuffledAnswers.map((e, i) => (
