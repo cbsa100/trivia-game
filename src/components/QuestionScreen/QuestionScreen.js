@@ -33,9 +33,8 @@ const QuestionScreen = ({
   };
 
   return (
-    <div>
-      {step > 0 && step % 3 === 0 && <h2>Bonus Round</h2>}
-      <h3>{question}</h3>
+    <div className='gamebox questions'>
+      <h3 className='question'>{question}</h3>
       <div className='options'>
         {shuffledAnswers.map((e, i) => (
           <div
@@ -48,9 +47,8 @@ const QuestionScreen = ({
                 colorAnswers();
               }
             }}
-          >
-            {e.answer}
-          </div>
+            dangerouslySetInnerHTML={{ __html: e.answer }}
+          ></div>
         ))}
       </div>
     </div>

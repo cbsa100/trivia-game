@@ -1,32 +1,78 @@
 * {
   text-align: center;
 }
-.outerContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 90vh;
+html,
+body,
+.root {
+  min-height: 100vh;
 }
-
+.outerContainer {
+  min-height: 100vh;
+}
 .button {
-  width: 200px;
-  padding: 20px;
+  width: 240px;
+  height: 50px;
   border: 1px lightgrey solid;
+  vertical-align: middle;
   cursor: pointer;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
 }
 .button:hover {
   background: lightgrey;
 }
 
 .options {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 30px;
-  align-items: center;
+  box-shadow: 0px 0px 30px 10px rgba(143, 143, 143, 0.226);
+  padding: 20px 20px;
+  border-radius: 10px;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
+  max-width: 100%;
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  justify-items: center;
   justify-content: center;
 }
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+.question {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+.gamebox {
+  width: 600px;
+  max-width: calc(100% - 40px);
+  min-height: 400px;
+  padding: 20px 20px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
 
-.scores {
-  margin-top: auto;
+.background-madness {
+  animation: changeBackgroundColor 7s infinite;
+}
+@keyframes changeBackgroundColor {
+  0% {
+    background-color: #001f3f;
+  }
+  50% {
+    background-color: #ff4136;
+  }
+  100% {
+    background-color: #001f3f;
+  }
 }

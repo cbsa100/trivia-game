@@ -3,7 +3,7 @@ import './CatSelect.css';
 
 const CatSelect = ({ categories, onCatSelect }) => {
   return (
-    <div>
+    <div className='gamebox category-select'>
       <h3>choose a category</h3>
       <div className='options'>
         {categories &&
@@ -14,9 +14,8 @@ const CatSelect = ({ categories, onCatSelect }) => {
               onClick={() => {
                 onCatSelect(e.id);
               }}
-            >
-              {e.title}
-            </div>
+              dangerouslySetInnerHTML={{ __html: e.title }}
+            ></div>
           ))}
       </div>
     </div>

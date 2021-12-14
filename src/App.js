@@ -150,30 +150,39 @@ const App = () => {
   };
 
   return (
-    <div className='outerContainer'>
-      {phase === 0 && !(step % 3 === 0) && (
-        <CatSelect onCatSelect={onCatSelect} categories={categories} />
-      )}
-      {phase === 1 && (
-        <QuestionScreen
-          question={question}
-          value={value}
-          answers={answers}
-          onAnswerClick={onAnswerClick}
-          step={step}
-          disableButtons={disableButtons}
-        />
-      )}
-      {phase === 2 && <FinalScreen score={score} reset={reset} />}
-      <div className='scores'>
-        {highScore > 0 && highScore > score && (
-          <div className='highScore'>HIGH SCORE: {highScore}</div>
+    <>
+      <div
+        className={`outerContainer ${
+          step % 3 === 0 && step > 0 && 'background-madness'
+        }`}
+      >
+        <h1>The Trivia Master</h1>
+        {phase === 0 && !(step % 3 === 0) && (
+          <CatSelect onCatSelect={onCatSelect} categories={categories} />
         )}
-        {score > 0 && (
-          <div className='currentScore'>CURRENT SCORE: {score}</div>
+        {phase === 1 && (
+          <QuestionScreen
+            question={question}
+            value={value}
+            answers={answers}
+            onAnswerClick={onAnswerClick}
+            step={step}
+            disableButtons={disableButtons}
+          />
         )}
+        {phase === 2 && <FinalScreen score={score} reset={reset} />}
+        <div className='scores'>
+          {step > 0 && step % 3 === 0 && <h2>Bonus Round</h2>}
+
+          {highScore > 0 && highScore > score && (
+            <div className='highScore'>HIGH SCORE: {highScore}</div>
+          )}
+          {score > 0 && (
+            <div className='currentScore'>CURRENT SCORE: {score}</div>
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
